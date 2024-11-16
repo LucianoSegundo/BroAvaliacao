@@ -1,0 +1,31 @@
+
+main section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: center;
+
+    width: 100%;
+   
+    min-height:var(--alturaPadrao);
+    height: auto;
+}
+
+main section section{
+    width: 90%;
+    height: 20vh;
+    border: solid 1px;
+}
+
+main .SesHome{
+    background: violet;
+   
+}
+main .SesLogin{
+    background: aquamarine;
+  
+}
+main .SesCadastro{
+    background: tomato;
+   
+}
