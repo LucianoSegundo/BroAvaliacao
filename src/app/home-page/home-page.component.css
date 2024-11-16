@@ -1,9 +1,9 @@
 
-main section {
+main > section {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-self: center;
+    align-items: center;
 
     width: 100%;
    
@@ -11,10 +11,10 @@ main section {
     height: auto;
 }
 
-main section section{
-    width: 90%;
+main > section section{
+    width: 94%;
     height: 20vh;
-    border: solid 1px;
+    background: turquoise;
 }
 
 main .SesHome{
