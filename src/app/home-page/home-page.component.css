@@ -235,5 +235,18 @@ main .SesCadastro {
         width: 100vw;
         border-radius: 0;
     }
+
+    .fundoCad form{
+     
+     
+       width: 90%;
+  
+    }
   }
+}
+
+a {
+  color: var(--corTerciaria);
+    text-decoration: underline;
+  cursor: pointer;
 }
