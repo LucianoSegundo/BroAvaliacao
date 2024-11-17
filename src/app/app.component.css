@@ -3,6 +3,7 @@ header{
     width: 98.9vw;
     height: 6vh;
     position: fixed;
+    z-index: 4;
 }
 
 
