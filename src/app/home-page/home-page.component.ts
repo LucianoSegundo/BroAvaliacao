@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, RequiredValidator, Validators } from '@angular/forms';
+import { Component, AfterViewInit } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {  MatButtonModule } from '@angular/material/button';
 import {  MatInputModule} from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
 import { Estado, Cidade } from '../DTOs/Estado';
+
 
 @Component({
   selector: 'app-home-page',
@@ -12,7 +13,16 @@ import { Estado, Cidade } from '../DTOs/Estado';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })
-export class HomePageComponent {
+export class HomePageComponent implements AfterViewInit{
+
+ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
+  if(redi != null && redi == "login"){
+
+       this.scrolar(redi);
+
+    sessionStorage.removeItem("redirecionamento");
+  }
+}
 
   estados: Estado[] =[] ;
   cidades: Cidade[]= [];
@@ -34,5 +44,28 @@ export class HomePageComponent {
   });
 
  
+  scrolar(lugar:string){
+    if("login" == lugar){ 
+     window.scrollTo({
+      top: window.innerHeight* 0.99,
+      behavior:'smooth'
+
+     });
+    }
+    else if("cadastro" == lugar){
+      window.scrollTo({
+        top: window.innerHeight* 1.89,
+        behavior:'smooth'
+  
+       });
+    }
+    else if("cadastro2" == lugar){
+      window.scrollTo({
+        top: window.innerHeight* 0.90,
+        behavior:'smooth'
+  
+       });
+    }
+  }
  
 }

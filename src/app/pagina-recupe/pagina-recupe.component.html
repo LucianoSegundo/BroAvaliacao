@@ -1,0 +1,49 @@
+<main>
+    <section class="SesRec">
+        <div class="fundoRec">
+            <div class="carBlablabla">
+                <p class="ocultarCelular">
+                    Mas se esqueceu sua senha, <a href="/"> clique aqui</a> para recuperar.
+                </p>
+                <p class="ocultarPC">
+                    Esqueceu sua senha? <a href="/"> clique aqui</a>
+                </p>
+            </div>
+            <div class="divForm">
+                <form action="#" class="formulario" method="post" [formGroup]="formulario">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input matInput type="text" formControlName="email" placeholder="Aufredo de medeiros"
+                            required />
+                        @if (formulario.get("email")?.invalid) {
+                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                    <br />
+                    <br class="ocultarPC" />
+                    <mat-form-field>
+                        <mat-label>Nova senha</mat-label>
+                        <input matInput type="password" formControlName="senha" required />
+                        @if (formulario.get("senha")?.invalid) {
+                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                    <br />
+                    <br class="ocultarPC" />
+                    <mat-form-field>
+                        <mat-label>Confirmar senha</mat-label>
+                        <input matInput type="password" formControlName="cSenha" required />
+                        @if (formulario.get("cSenha")?.invalid) {
+                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                    <br />
+                    <br class="ocultarPC" />
+                    <button mat-raised-button [disabled]="!formulario.valid || this.formulario.value.senha != this.formulario.value.cSenha">
+                        Cadastrar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>

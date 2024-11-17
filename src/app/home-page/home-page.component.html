@@ -10,7 +10,7 @@
         <section>
             <div>
                 <p>
-                    <a href="">Cadastre-se</a> agora mesmo e participe de foruns
+                    <a  (click)="scrolar('cadastro')">Cadastre-se</a> agora mesmo e participe de foruns
                     culinários
                 </p>
             </div>
@@ -21,7 +21,7 @@
             <img src="broa de pé de moleque.jpg" alt="Broa de coco" width="40px" height="40px" />
             <div>
                 <p>
-                    Ou se já possui conta, <a href="">clique aqui </a> para fazer login.
+                    Ou se já possui conta, <a  (click)="scrolar('login')">clique aqui </a> para fazer login.
                 </p>
             </div>
         </section>
@@ -30,16 +30,16 @@
         <div class="fundoLogin">
             <div class="carBlablabla">
                 <p class="ocultarCelular">
-                    Ainda não possui conta? <a href=""> clique aqui</a> para se cadastrar.
+                    Ainda não possui conta? <a  (click)="scrolar('cadastro')">clique aqui</a> para se cadastrar.
                     <br />
                     <br />
-                    Mas se esqueceu sua senha, <a href=""> clique aqui</a> para recuperar.
+                    Mas se esqueceu sua senha, <a href="/recuperar"> clique aqui</a> para recuperar.
                 </p>
                 <p class="ocultarPC">
-                    Ainda não possui conta? <a href=""> clique aqui</a>
+                    Ainda não possui conta? <a  (click)="scrolar('cadastro')"> clique aqui</a>
                     <br />
                     <br />
-                    Esqueceu sua senha? <a href=""> clique aqui</a>
+                    Esqueceu sua senha? <a href="/recuperar"> clique aqui</a>
                 </p>
             </div>
             <div class="divForm">
@@ -87,30 +87,30 @@
                         <input type="text" matInput formControlName="senha" required />
 
                         @if(formCadastro.value.confSenha !== formCadastro.value.senha){
-                            <mat-error> Senhas devem ser iguais</mat-error>
-                            }
+                        <mat-error> Senhas devem ser iguais</mat-error>
+                        }
                         @if(formCadastro.get("senha")?.invalid){
                         <mat-error> Deve conter no minimo 4 letras</mat-error>
-                        } 
+                        }
                     </mat-form-field>
 
                     <mat-form-field>
                         <mat-label>Confirmar Senha</mat-label>
                         <input type="text" matInput formControlName="confSenha" required />
                         @if(formCadastro.value.confSenha !== formCadastro.value.senha){
-                            <mat-error> Senhas devem ser iguais</mat-error>
-                            }
-                            
+                        <mat-error> Senhas devem ser iguais</mat-error>
+                        }
+
                         @if(formCadastro.get("confSenha")?.invalid){
                         <mat-error> Deve conter no minimo 4 letras</mat-error>
                         }
                     </mat-form-field>
-                
+
                 </div>
 
                 <mat-form-field>
                     <mat-label>Data</mat-label>
-                    <input type="date" matInput  formControlName="data" required />
+                    <input type="date" matInput formControlName="data" required />
 
                 </mat-form-field>
 
@@ -125,7 +125,7 @@
                     <mat-label>Estado</mat-label>
                     <mat-select formControlName="estado">
                         @for (estado of estados; track $index) {
-                            <mat-option value="{{estado.Nome}}"> {{estado.Nome}}</mat-option>
+                        <mat-option value="{{estado.Nome}}"> {{estado.Nome}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
@@ -133,18 +133,18 @@
                     <mat-label>Estado</mat-label>
                     <mat-select formControlName="cidade">
                         @for (cidade of cidades; track $index) {
-                            <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
+                        <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
 
-                
-                    <input type="file" accept="image/*" formControlName="data"  />
 
-               
-                    <button mat-raised-button [disabled]="!formCadastro.valid">
-                        Logar
-                    </button>
+                <input type="file" accept="image/*" formControlName="data" />
+
+
+                <button mat-raised-button [disabled]="!formulario.valid || this.formCadastro.value.senha != this.formCadastro.value.confSenha">
+                    Cadastrar
+                </button>
             </form>
         </div>
     </section>
