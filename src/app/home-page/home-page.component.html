@@ -1,0 +1,151 @@
+<main>
+    <section class="SesHome">
+        <section>
+            <img src="broa de milho.jpg" alt="Broa de coco" width="40px" height="40px" />
+            <div>
+                <p>Apresente e descubra novos sabores de broa por todo o brasil.</p>
+            </div>
+        </section>
+
+        <section>
+            <div>
+                <p>
+                    <a href="">Cadastre-se</a> agora mesmo e participe de foruns
+                    culinários
+                </p>
+            </div>
+            <img src="broa de coco.jpeg" alt="Broa de coco" width="40px" height="40px" />
+        </section>
+
+        <section>
+            <img src="broa de pé de moleque.jpg" alt="Broa de coco" width="40px" height="40px" />
+            <div>
+                <p>
+                    Ou se já possui conta, <a href="">clique aqui </a> para fazer login.
+                </p>
+            </div>
+        </section>
+    </section>
+    <section class="SesLogin">
+        <div class="fundoLogin">
+            <div class="carBlablabla">
+                <p class="ocultarCelular">
+                    Ainda não possui conta? <a href=""> clique aqui</a> para se cadastrar.
+                    <br />
+                    <br />
+                    Mas se esqueceu sua senha, <a href=""> clique aqui</a> para recuperar.
+                </p>
+                <p class="ocultarPC">
+                    Ainda não possui conta? <a href=""> clique aqui</a>
+                    <br />
+                    <br />
+                    Esqueceu sua senha? <a href=""> clique aqui</a>
+                </p>
+            </div>
+            <div class="divForm">
+                <form action="#" class="formulario" method="post" [formGroup]="formulario">
+                    <mat-form-field>
+                        <mat-label>Login</mat-label>
+                        <input matInput type="text" formControlName="login" placeholder="Aufredo de medeiros"
+                            required />
+                        @if (formulario.get("login")?.invalid) {
+                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                    <br />
+                    <br class="ocultarPC" />
+                    <mat-form-field>
+                        <mat-label>senha</mat-label>
+                        <input matInput type="password" formControlName="senha" required />
+                        @if (formulario.get("senha")?.invalid) {
+                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                    <br />
+                    <br class="ocultarPC" />
+                    <button mat-raised-button [disabled]="!formulario.valid">
+                        Logar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="SesCadastro">
+        <div class="fundoCad">
+            <form action="" method="post" [formGroup]="formCadastro">
+                <mat-form-field>
+                    <mat-label>Nome</mat-label>
+                    <input type="text" matInput placeholder="Janio Quadros" formControlName="nome" required />
+                    @if(formCadastro.get("nome")?.invalid){
+                    <mat-error> Deve conter no minimo 4 letras</mat-error>
+                    }
+                </mat-form-field>
+
+                <div>
+                    <mat-form-field>
+                        <mat-label>Senha</mat-label>
+                        <input type="text" matInput formControlName="senha" required />
+
+                        @if(formCadastro.value.confSenha !== formCadastro.value.senha){
+                            <mat-error> Senhas devem ser iguais</mat-error>
+                            }
+                        @if(formCadastro.get("senha")?.invalid){
+                        <mat-error> Deve conter no minimo 4 letras</mat-error>
+                        } 
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Confirmar Senha</mat-label>
+                        <input type="text" matInput formControlName="confSenha" required />
+                        @if(formCadastro.value.confSenha !== formCadastro.value.senha){
+                            <mat-error> Senhas devem ser iguais</mat-error>
+                            }
+                            
+                        @if(formCadastro.get("confSenha")?.invalid){
+                        <mat-error> Deve conter no minimo 4 letras</mat-error>
+                        }
+                    </mat-form-field>
+                
+                </div>
+
+                <mat-form-field>
+                    <mat-label>Data</mat-label>
+                    <input type="date" matInput  formControlName="data" required />
+
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>email</mat-label>
+                    <input type="text" matInput formControlName="nome" required />
+                    @if(formCadastro.get("nome")?.invalid){
+                    <mat-error> Deve conter no minimo 4 letras</mat-error>
+                    }
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="estado">
+                        @for (estado of estados; track $index) {
+                            <mat-option value="{{estado.Nome}}"> {{estado.Nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <mat-select formControlName="cidade">
+                        @for (cidade of cidades; track $index) {
+                            <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
+                        }
+                    </mat-select>
+                </mat-form-field>
+
+                
+                    <input type="file" accept="image/*" formControlName="data"  />
+
+               
+                    <button mat-raised-button [disabled]="!formCadastro.valid">
+                        Logar
+                    </button>
+            </form>
+        </div>
+    </section>
+</main>
