@@ -123,19 +123,21 @@
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Estado</mat-label>
-                    <mat-select formControlName="estado">
+                    <mat-select formControlName="estado" >
                         @for (estado of estados; track $index) {
-                        <mat-option value="{{estado.Nome}}"> {{estado.Nome}}</mat-option>
+                        <mat-option value="{{estado.Nome}}" (onSelectionChange)="selecionarEstado($index)"> {{estado.Nome}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field>
-                    <mat-label>Estado</mat-label>
-                    <mat-select formControlName="cidade">
-                        @for (cidade of cidades; track $index) {
-                        <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
-                        }
-                    </mat-select>
+                    <mat-label>Cidade</mat-label>
+                
+                        <mat-select formControlName="cidade" [disabled]="mostrarCidade">
+                            @for (cidade of cidades; track $index) {
+                                <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
+                            }
+                        </mat-select>
+                    
                 </mat-form-field>
 
 
