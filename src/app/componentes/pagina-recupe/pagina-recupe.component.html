@@ -15,8 +15,8 @@
                         <mat-label>Email</mat-label>
                         <input matInput type="text" formControlName="email" placeholder="Aufredo de medeiros"
                             required />
-                        @if (formulario.get("email")?.invalid) {
-                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        @if (validarCampo("email") || houveErro) {
+                        <mat-error> {{mensagemErroE}}</mat-error>
                         }
                     </mat-form-field>
                     <br />
@@ -24,8 +24,8 @@
                     <mat-form-field>
                         <mat-label>Nova senha</mat-label>
                         <input matInput type="password" formControlName="senha" required />
-                        @if (formulario.get("senha")?.invalid) {
-                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        @if (validarCampo("senha") || houveErro) {
+                        <mat-error> {{mensagemErroS}}</mat-error>
                         }
                     </mat-form-field>
                     <br />
@@ -33,8 +33,8 @@
                     <mat-form-field>
                         <mat-label>Confirmar senha</mat-label>
                         <input matInput type="password" formControlName="cSenha" required />
-                        @if (formulario.get("cSenha")?.invalid) {
-                        <mat-error> compo precisa de no minimo 4 letras</mat-error>
+                        @if (validarCampo("cSenha") || houveErro) {
+                        <mat-error> {{mensagemErroCV}}</mat-error>
                         }
                     </mat-form-field>
                     <br />

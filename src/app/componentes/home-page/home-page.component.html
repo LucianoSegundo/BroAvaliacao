@@ -45,10 +45,10 @@
             <div class="divForm">
                 <form action="#" class="formulario" method="post" [formGroup]="formulario">
                     <mat-form-field>
-                        <mat-label>Login</mat-label>
-                        <input matInput type="text" formControlName="login" placeholder="Aufredo de medeiros"
+                        <mat-label>usuario</mat-label>
+                        <input matInput type="text" formControlName="usuario" placeholder="Aufredo de medeiros"
                             required />
-                        @if (formulario.get("login")?.invalid) {
+                        @if (formulario.get("usuario")?.invalid) {
                         <mat-error> compo precisa de no minimo 4 letras</mat-error>
                         }
                     </mat-form-field>
@@ -63,7 +63,7 @@
                     </mat-form-field>
                     <br />
                     <br class="ocultarPC" />
-                    <button mat-raised-button [disabled]="!formulario.valid">
+                    <button mat-raised-button [disabled]="!formulario.valid" (click)="fazerLogin()">
                         Logar
                     </button>
                 </form>
@@ -75,8 +75,8 @@
             <form action="" method="post" [formGroup]="formCadastro">
                 <mat-form-field>
                     <mat-label>Nome</mat-label>
-                    <input type="text" matInput placeholder="Janio Quadros" formControlName="nome" required />
-                    @if(formCadastro.get("nome")?.invalid){
+                    <input type="text" matInput placeholder="Janio Quadros" formControlName="usuario" required />
+                    @if(formCadastro.get("usuario")?.invalid){
                     <mat-error> Deve conter no minimo 4 letras</mat-error>
                     }
                 </mat-form-field>
@@ -116,33 +116,14 @@
 
                 <mat-form-field>
                     <mat-label>email</mat-label>
-                    <input type="text" matInput formControlName="nome" required />
-                    @if(formCadastro.get("nome")?.invalid){
+                    <input type="text" matInput formControlName="email" required />
+                    @if(formCadastro.get("email")?.invalid){
                     <mat-error> Deve conter no minimo 4 letras</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Estado</mat-label>
-                    <mat-select formControlName="estado">
-                        @for (estado of estados; track $index) {
-                        <mat-option value="{{estado.Nome}}"> {{estado.Nome}}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
-                <mat-form-field>
-                    <mat-label>Estado</mat-label>
-                    <mat-select formControlName="cidade">
-                        @for (cidade of cidades; track $index) {
-                        <mat-option value="{{cidade.Nome}}"> {{cidade.Nome}}</mat-option>
-                        }
-                    </mat-select>
-                </mat-form-field>
+                
 
-
-                <input type="file" accept="image/*" formControlName="data" />
-
-
-                <button mat-raised-button [disabled]="!formulario.valid || this.formCadastro.value.senha != this.formCadastro.value.confSenha">
+                <button mat-raised-button (click)="fazerCadastro()" [disabled]="!formCadastro.valid || this.formCadastro.value.senha != this.formCadastro.value.confSenha">
                     Cadastrar
                 </button>
             </form>
