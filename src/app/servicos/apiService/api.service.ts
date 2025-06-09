@@ -17,22 +17,16 @@ export class ApiService {
 
   private urlUsuario: string = environment.urlBase + "/usuario";
 
-  cadastrarUsuario(body:cadastroUsuarioRequest): Observable<UsuarioResponse>{
-    return  this.http.post<UsuarioResponse>(this.urlUsuario +"/cadastrar" , body);
+  cadastrarUsuario(body:cadastroUsuarioRequest): Observable<loginResponse>{
+    return  this.http.post<loginResponse>(this.urlUsuario +"/" , body);
   }
 
   LogarUsuario(body:loginRequest): Observable<loginResponse>{
-    return  this.http.post<loginResponse>(this.urlUsuario +"/logar" , body);
+    return  this.http.post<loginResponse>(this.urlUsuario +"/login" , body);
   }
 
   RecuperarSenha(body:recuperarRequest): Observable<UsuarioResponse>{
     return  this.http.post<UsuarioResponse>(this.urlUsuario +"/recuperar" , body);
-  }
-
-  private urlEstado: string = environment.urlBase + "/Estados";
-
-  requerirEstados(): Observable<Estado[]>{
-    return  this.http.get<Estado[]>(this.urlEstado);
   }
 
 

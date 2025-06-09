@@ -21,7 +21,8 @@ import { cadastroUsuarioRequest } from '../../DTOs/cadastroDTO';
 export class HomePageComponent implements AfterViewInit{
 
   constructor(private api:ApiService, private router:Router){
-    this.coletarEstados();
+
+
   }
 ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
   if(redi != null && redi == "login"){
@@ -31,24 +32,18 @@ ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
     sessionStorage.removeItem("redirecionamento");
   }
 }
-  mostrarCidade: boolean = true; 
-  estados: Estado[] =[] ;
-  cidades: Cidade[]= [];
   
   formulario = new FormGroup({
-    login: new FormControl("", [Validators.required, Validators.minLength(4)]),
+    usuario: new FormControl("", [Validators.required, Validators.minLength(4)]),
     senha: new FormControl("", [Validators.required, Validators.minLength(4)])
   });
 
   formCadastro = new FormGroup({
-    nome: new FormControl("",[Validators.required, Validators.minLength(4)]),
+    usuario: new FormControl("",[Validators.required, Validators.minLength(4)]),
     senha: new FormControl("",[Validators.required, Validators.minLength(4)]),
     confSenha: new FormControl("",[Validators.required, Validators.minLength(4)]),
     email: new FormControl("",[Validators.required, Validators.minLength(4), Validators.email]),
     data: new FormControl("",[Validators.required, Validators.minLength(10)]),
-    cidade: new FormControl("",[Validators.required, Validators.minLength(5)]),
-    estado: new FormControl("",[Validators.required, Validators.minLength(5)]),
-    fperfil: new FormControl(null)
   });
 
   fazerLogin(){
@@ -62,7 +57,7 @@ ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
 
         },
         error: (error:HttpErrorResponse) =>{
-          this.formulario.reset;
+          this.formulario.reset();
           alert(error.error.message)
 
         }
@@ -71,10 +66,12 @@ ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
   }
 
   fazerCadastro(){
+    console.log("metodo chamado")
     if(this.formCadastro.valid){
       this.api.cadastrarUsuario(this.formCadastro.value as cadastroUsuarioRequest).subscribe({
         next: (data) =>{
-          this.formCadastro.reset;
+          console.log(data)
+          this.formCadastro.reset();
           this.scrolar("login");
         },
         error: (error:HttpErrorResponse) =>{
@@ -107,23 +104,5 @@ ngAfterViewInit() {let redi = sessionStorage.getItem("redirecionamento");
        });
     }
   }
-
-  private coletarEstados(){
-    this.api.requerirEstados().subscribe({
-      next:(data) =>{
-         this.estados = data;
-
-      },
-      error: (error) =>{
-        alert("algo deu errado");
-      }
-      
-    })
-  }
-
-  selecionarEstado(index:number){
-    this.cidades = this.estados.at(index).cidades;
-    this.mostrarCidade = false;
-  };
  
 }

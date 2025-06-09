@@ -66,8 +66,8 @@ export class PaginaRecupeComponent {
        else if( campo == "senha") this.mensagemErroS = "compo precisa de no minimo 4 letras";
        else if( campo == "cSenha") this.mensagemErroCV = "compo precisa de no minimo 4 letras";
 
+      }
+      
       return true;
-    }
-
   }
 }
