@@ -3,7 +3,6 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import {  MatButtonModule } from '@angular/material/button';
 import {  MatInputModule} from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select';
-import { Estado, Cidade } from '../../DTOs/Estado';
 import { ApiService } from '../../servicos/apiService/api.service';
 import { loginRequest } from '../../DTOs/LoginDTO';
 import { HttpErrorResponse } from '@angular/common/http';

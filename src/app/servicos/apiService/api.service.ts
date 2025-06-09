@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
 import { loginRequest, loginResponse } from '../../DTOs/LoginDTO';
 import { recuperarRequest } from '../../DTOs/recuperarSenha';
-import { Estado } from '../../DTOs/Estado';
 
 @Injectable({
   providedIn: 'root'
