@@ -1,4 +1,4 @@
 export const environment = {
-    urlBase: "" + "/api/v1"
+    urlBase: "https://broavaliacao-back-end.onrender.com" + "/api/v1"
 
 };
