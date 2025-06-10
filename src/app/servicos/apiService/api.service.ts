@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { cadastroUsuarioRequest, UsuarioResponse } from '../../DTOs/cadastroDTO';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
 import { loginRequest, loginResponse } from '../../DTOs/LoginDTO';
 import { recuperarRequest } from '../../DTOs/recuperarSenha';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
